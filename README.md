@@ -52,7 +52,7 @@ This project demonstrates a Retrieval-Augmented Generation (RAG) web application
 
 2. **Set the Gemini API Key:**
 
-    Edit the file at rag_server/docker-compose.yml to set the GEMINI_API_KEY environment variable.
+    Edit the file at ./documentation_rag/rag_server/docker-compose.yml to set the GEMINI_API_KEY environment variable.
     ```
     environment:
       - GEMINI_API_KEY=[* YOUR API KEY *]
