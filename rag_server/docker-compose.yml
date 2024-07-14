@@ -1,0 +1,35 @@
+services:
+  db:
+    build:
+      context: ../rag_db
+      dockerfile: Dockerfile
+    image: pg-img
+    container_name: pg-con
+    working_dir: /app
+    environment:
+      - POSTGRES_USER=rag_user
+      - POSTGRES_PASSWORD=rag_user
+      - POSTGRES_DB=rag_db
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    volumes: 
+      - ./pgdata:/var/lib/postgresql/data 
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: flask-img
+    container_name: flask-con
+    working_dir: /app
+    volumes:
+      - ~/Documents/gen_ai/rag_server:/app
+    ports:
+      - "5000:5000"
+    environment:
+      - GEMINI_API_KEY=[* YOUR API KEY *]
+      - PROJECT_FOLDER =./
+      - DATABASE_URL=postgresql://rag_user:rag_user@db:5432/rag_db
+    restart: unless-stopped

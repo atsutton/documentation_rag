@@ -1,0 +1,11 @@
+.App {
+}
+
+main,
+.App,
+.main,
+.main-header,
+.main-body,
+.main-footer {
+  overflow: hidden;
+}

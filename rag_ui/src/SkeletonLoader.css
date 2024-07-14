@@ -1,0 +1,47 @@
+:root {
+    --loading-color1: #00fffd;
+    --loading-color2: #000000;
+    --bar-width: 600px;
+}
+
+.skeleton-loader {
+    width: var(--bar-width);
+    height: 75px;
+    animation: reveal-animation 1s ease 1;
+}
+
+.animated-line-1 {
+    background: linear-gradient(90deg, var(--loading-color1), var(--loading-color2), var(--loading-color1));
+}
+.animated-line-2 {
+    background: linear-gradient(90deg, var(--loading-color2), var(--loading-color1), var(--loading-color2));
+}
+.animated-line-1, .animated-line-2 {
+    background-size: 180% 180%;
+    animation: gradient-animation 1.5s ease infinite;
+    height: 12px;
+    margin: 8px;
+    width: 80%;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes reveal-animation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: var(--bar-width);
+    }
+}
+
