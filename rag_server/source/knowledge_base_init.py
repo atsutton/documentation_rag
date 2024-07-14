@@ -46,7 +46,7 @@ def init_knowledge_base(print_stats=False):
   logger.debug(f'** Knowledgebase Initialization: Complete **')
 
 def load_pdfs(pdf_folder='/pdfs'):
-  pdf_folder_path = get_project_folder() + pdf_folder
+  pdf_folder_path = get_root_folder() + pdf_folder
   pdf_loader = PyPDFDirectoryLoader(pdf_folder_path)
   pdf_docs = pdf_loader.load()
   return [doc.page_content for doc in pdf_docs]
@@ -88,11 +88,11 @@ def init_chroma_db(embeddings, docs):
   return collection
 
 def get_chroma_collection():
-  chroma_client = chromadb.PersistentClient(get_project_folder() + '/chroma')
+  chroma_client = chromadb.PersistentClient(get_root_folder() + '/chroma')
   return chroma_client.get_or_create_collection('documentation_pdfs')
 
-def get_project_folder():
-  return os.environ.get('PROJECT_FOLDER')
+def get_root_folder():
+  return '.'
 
 __all__ = ['init_knowledge_base', 'get_chroma_collection']
 

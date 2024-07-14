@@ -2,4 +2,3 @@ chroma/
 flask_venv/
 pgdata/
 __pycache__/
-source/script.py

@@ -59,7 +59,7 @@ def init_genai_client():
   return genai.GenerativeModel('gemini-pro')
 
 def get_genai_key():
-    api_key = os.environ.get('GEMINI_API_KEY')  
+    api_key = os.getenv('GEMINI_API_KEY')  
     if not api_key:
         raise ValueError("GEMINI_API_KEY not found in environment")
     return api_key

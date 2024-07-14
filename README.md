@@ -2,7 +2,7 @@
 
 This project demonstrates a Retrieval-Augmented Generation (RAG) web application that combines a language model (LLM) with a ChromaDB vector database. This approach enables the system to provide accurate, context-aware responses to user queries by grounding the LLM's responses in relevant information retrieved from the database.
 
-## Features (Under Development)
+## Features
 
 * **Retrieval-Augmented Generation (RAG):** The core of the application. This process involves:
 
@@ -33,7 +33,7 @@ This project demonstrates a Retrieval-Augmented Generation (RAG) web application
 
 * The current design provides answers about Apex, the Java-like proprietary programming language from Salesforce. A future design will allow users to easily configure any topic for which pdf documents can be obtained. 
 
-* The application relies on the Google Gemini API and the gemini-pro model, for which you will will need [an API key](https://aistudio.google.com/app/apikey). 
+* The application relies on the Google Gemini API and the gemini-pro model, for which you will will need <a href="https://aistudio.google.com/app/apikey" target="_blank">an api key</a>. 
 
 ## Installation and Setup
 
@@ -47,7 +47,8 @@ This project demonstrates a Retrieval-Augmented Generation (RAG) web application
 1. **Clone the repository:**
 
    ```bash
-   git clone [https://github.com/your-username/your-repository.git](https://github.com/your-username/your-repository.git)
+   git clone https://github.com/atsutton/documentation_rag.git
+   ```
 
 2. **Set the Gemini API Key:**
 
@@ -61,33 +62,34 @@ This project demonstrates a Retrieval-Augmented Generation (RAG) web application
     
     Build and run the containers:
     ```bash
-    docker compose -f ./rag_server/docker-compose.yml up
+    docker compose -f ./documentation_rag/rag_server/docker-compose.yml up
     ```
     Leave the teriminal open to view logs.     
 
-   **Note**: this step may take 10-20 minutes to complete on first run, depending on system resources. This is due buliding of the Chroma database and ingestion of pdf files. The Chroma database is configured to persist, so it's not re-built in subsequent runs. The step is complete when the terminal shows: "** Knowledgebase Initialization: Complete **" and "** Flask Initialization: Complete **"
+   **Note**: this step may take 10-20 minutes to complete on first run, depending on system resources. This is due buliding of the Chroma database and ingestion of pdf files. The Chroma database is configured to persist, so it's not re-built in subsequent runs. The step is complete when the terminal shows: "\*\* Knowledgebase Initialization: Complete \*\*" and "\*\* Flask Initialization: Complete \*\*"
 
-   **Note**: the containers will remain up for future use and will not be deleted when you call docker-compose down.
+   **Note**: the containers will persist for future use and will not be deleted when you call docker-compose down.
 
 4. **Start the React UI:**
 
-    Open a second terminal. 
-
-    Build and run the React app container:
+    Open a second terminal. Build and run the React app container:
     ```bash
-    docker compose -f ./rag_ui/docker-compose.yml up
-   ```
-    **Note**: the containers will remain up for future use and will not be deleted when you call docker-compose down.
+    docker compose -f ./documentation_rag/rag_ui/docker-compose.yml up
+    ```
+    **Note**: the containers will persist for future use and will not be deleted when you call docker-compose down.
 
 5. **Access the Application:**
 
-Open your web browser and go to http://localhost:8888.
+    Open your web browser and go to 
+    ```
+    http://localhost:8888
+    ```
 
 ### Installation Notes:
 
-    * The first time you run these commands, it might take a while to download the necessary Docker images and build the Chroma database. Subsequent runs will be faster.
+* The first time you run these commands, it might take a while to download the necessary Docker images and build the Chroma database. Subsequent runs will be faster.
 
-    * Ensure that the port numbers specified in the docker-compose.yml files don't conflict with any other applications running on your system.
+* Ensure that the port numbers specified in the docker-compose.yml files don't conflict with any other applications running on your system.
 
 ## License
 

@@ -25,11 +25,10 @@ services:
     container_name: flask-con
     working_dir: /app
     volumes:
-      - ~/Documents/gen_ai/rag_server:/app
+      - .:/app
     ports:
       - "5000:5000"
     environment:
       - GEMINI_API_KEY=[* YOUR API KEY *]
-      - PROJECT_FOLDER =./
       - DATABASE_URL=postgresql://rag_user:rag_user@db:5432/rag_db
     restart: unless-stopped
